@@ -3,6 +3,13 @@ from pygame import Surface
 from Button import Button
 
 class Scene:
+    def __int__(self, image: Surface):
+        self.HEIGHT = 360
+        self.WIDTH = 690
+        self.screen = pygame.display.set_mode((self.WIDTH, self.HEIGHT))
+
+        self.image = image
+
     def __init__(self,image: Surface, image_button_1: Surface, image_button_2: Surface):
         self.HEIGHT = 360
         self.WIDTH = 690
@@ -16,8 +23,7 @@ class Scene:
 
     def draw(self):
         self.screen.blit(self.image,(0,0))
-        self.screen.blit(self.img_button_1,(0,300))
-        self.screen.blit(self.img_button_2,(345,300))
+        self.image_button_1.draw()
         pygame.display.update()
 
 
