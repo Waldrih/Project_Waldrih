@@ -31,15 +31,6 @@ while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             quit()
-        elif event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_RIGHT:
-                screen.blit(scene_1.scene_1, (0, 0))
-                pygame.display.update()
-            elif event.key == pygame.K_LEFT:
-                screen.blit(scene_1.scene_2, (0, 0))
-                pygame.display.update()
-            elif event.key == pygame.K_UP:
-                screen.blit(scene_1.scene_3, (0, 0))
-                pygame.display.update()
+
 
 pygame.display.update()
