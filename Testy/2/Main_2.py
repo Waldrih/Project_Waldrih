@@ -16,11 +16,15 @@ img_scene_1 = pygame.image.load('scene_1.png')
 img_scene_2 = pygame.image.load('scene_2.png')
 img_scene_3 = pygame.image.load('scene_3.png')
 
-scene_1 = Scene(img_scene_1)
-scene_2 = Scene(img_scene_2)
-scene_3 = Scene(img_scene_3)
+button_img_345_idz_na_polnoc = pygame.image.load('buttons\idz_na_polnoc_345px.png')
+button_img_345_opis_okolicy = pygame.image.load('buttons\opis_okolicy_345px.png')
 
-scene_2.draw()
+scene_1 = Scene(img_scene_1, button_img_345_idz_na_polnoc, button_img_345_opis_okolicy)
+#scene_2 = Scene(img_scene_2)
+#scene_3 = Scene(img_scene_3)
+
+
+scene_1.draw()
 pygame.display.update()
 while True:
 
