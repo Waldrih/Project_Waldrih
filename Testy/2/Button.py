@@ -1,6 +1,7 @@
 import pygame
 from pygame import Surface
 
+
 class Button():
     def __init__(self, x, y, image: Surface):
         width = image.get_width()
@@ -26,6 +27,9 @@ class Button():
 
 
         # draw button on screen
+        HEIGHT = 360
+        WIDTH = 690
+        screen = pygame.display.set_mode((WIDTH, HEIGHT))
         screen.blit(self.image, (self.rect.x, self.rect.y))
 
         return action

@@ -20,7 +20,7 @@ scene_1 = Scene(img_scene_1)
 scene_2 = Scene(img_scene_2)
 scene_3 = Scene(img_scene_3)
 
-scene_1.draw()
+scene_2.draw()
 pygame.display.update()
 while True:
 
