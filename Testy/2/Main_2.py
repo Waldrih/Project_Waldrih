@@ -1,6 +1,7 @@
 import pygame
 from Scene import Scene
 from Button import Button
+from Board import Board
 
 pygame.init()
 
@@ -24,8 +25,11 @@ scene_1 = Scene(img_scene_1, button_img_345_idz_na_polnoc, button_img_345_opis_o
 scene_2 = Scene(img_scene_2, button_img_345_idz_na_polnoc, button_img_345_opis_okolicy)
 #scene_3 = Scene(img_scene_3)
 button_345_N = Button
+#boards instances
+board_1 = Board(scene_1,scene_2,scene_2,scene_2,scene_2)
+board_1.draw()
 
-scene_1.draw()
+
 pygame.display.update()
 while True:
 
