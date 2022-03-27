@@ -53,8 +53,10 @@ button_N = Button(0,300,img_button_N)
 
 def draw_board(main_board: Surface):
     screen.blit(img_scene_1, (0, 0))
-    button_des.draw()
-    button_N.draw()
+    if button_des.draw():
+        print("Malowniczy opis nudnego terenu")
+    if button_N.draw():
+        print("Pójdem na północ")
 
 
 while True:

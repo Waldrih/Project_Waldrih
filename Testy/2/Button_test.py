@@ -44,8 +44,11 @@ class Button():
             if pygame.mouse.get_pressed()[0] == 1 and self.clicked == False:
                 self.clicked = True
                 action = True
+                print("click")
+
             if pygame.mouse.get_pressed()[0] == 0:
                 self.clicked = False
+                print("not click")
         # draw button on screen
         screen.blit(self.image, (self.rect.x, self.rect.y))
 
@@ -59,12 +62,6 @@ button_2 = Button(540,270,exit_img, 1)
 # game loop
 run = True
 while run:
-    screen.fill((111,111,111))
-
-    if button_1.draw():
-        print("1 buton")
-    if button_2.draw():
-        print("2 buton")
 
     # event handler
     for event in pygame.event.get():
