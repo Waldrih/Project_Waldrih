@@ -49,14 +49,30 @@ img_button_W = pygame.image.load('buttons_138px\W.png')
 
 button_des = Button(552, 300, img_button_DES )
 button_N = Button(0,300,img_button_N)
+button_E = Button(138,300,img_button_E)
+button_S = Button(276,300,img_button_S)
+button_W = Button(414,300,img_button_W)
 
+def choise_button(N: bool, E: bool, S: bool, W: bool):
+    if N and True:
+        print("Idymy na PO")
+    if E and True:
+        print("Pódziesz Ty na wschód")
+    if S and True:
+        pass
 
 def draw_board(main_board: Surface):
     screen.blit(img_scene_1, (0, 0))
     if button_des.draw():
         print("Malowniczy opis nudnego terenu")
     if button_N.draw():
-        print("Pójdem na północ")
+        print("Pójdem na PÓŁNOC")
+    button_E.draw()
+
+    button_S.draw()
+
+    button_W.draw()
+
 
 
 while True:
