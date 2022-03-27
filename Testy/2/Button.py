@@ -29,8 +29,9 @@ class Button():
         # draw button on screen
         HEIGHT = 360
         WIDTH = 690
-        screen = pygame.display.set_mode((WIDTH, HEIGHT))
-        screen.blit(self.image, (self.rect.x, self.rect.y))
+        screen = pygame.Surface
+        #screen.blit(self.image, (self.rect.x, self.rect.y))
+
 
         #return action
 

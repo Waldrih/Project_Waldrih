@@ -1,6 +1,6 @@
 import pygame
 from Scene import Scene
-from Button import Button
+from Main_2 import Button
 
 class Board:
     DES_img = pygame.image.load('buttons_138px\DES.png')
