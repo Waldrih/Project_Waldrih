@@ -3,9 +3,20 @@ from Scene import Scene
 from Button import Button
 
 class Board:
-    def __init__(self, main_scene: Scene, first_button: Button, second_button: Button, second_scene: Scene):
+    DES_img = pygame.image.load('buttons_138px\DES.png')
+    N_img = pygame.image.load('buttons_138px\N.png')
+    E_img = pygame.image.load('buttons_138px\E.png')
+    S_img = pygame.image.load('buttons_138px\S.png')
+    W_img = pygame.image.load('buttons_138px\W.png')
+
+    def __init__(self, main_scene: Scene, N_scene: Scene, E_scene: Scene, S_scene: Scene, W_scene):
         self.main_scene = main_scene
-        self.first_button = first_button
-        self.second_button = second_button
-        self.second_scene = second_scene
+        self.N_scene = N_scene
+        self.E_scene = E_scene
+        self.S_scene = S_scene
+        self.W_scene = W_scene
+
+
+
+
 

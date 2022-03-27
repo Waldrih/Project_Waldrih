@@ -12,7 +12,7 @@ class Button():
         self.clicked = False
 
     def draw(self):
-        #action = False
+        action = False
         #get mouse position
         pos = pygame.mouse.get_pos()
 
