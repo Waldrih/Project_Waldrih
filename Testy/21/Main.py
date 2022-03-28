@@ -1,5 +1,8 @@
+import time
+
 import pygame
 from pygame import Surface
+from Position import Position
 
 pygame.init()
 
@@ -53,6 +56,10 @@ button_E = Button(138,300,img_button_E)
 button_S = Button(276,300,img_button_S)
 button_W = Button(414,300,img_button_W)
 
+position_1 = Position(1,1,img_scene_1,True,False,False,False)
+position_2 = Position(1,0,img_scene_2,False,True,True,False)
+position_3 = Position(2,0,img_scene_3,True,False,True,True)
+
 def choise_button(N: bool, E: bool, S: bool, W: bool):
     if N and True:
         print("Idymy na PO")
@@ -65,6 +72,7 @@ def draw_board(main_board: Surface):
     screen.blit(img_scene_1, (0, 0))
     if button_des.draw():
         print("Malowniczy opis nudnego terenu")
+
     if button_N.draw():
         print("Pójdem na PÓŁNOC")
     button_E.draw()
@@ -73,20 +81,29 @@ def draw_board(main_board: Surface):
 
     button_W.draw()
 
+current_position = Position(0,0)
 
-
-while True:
-    draw_board(img_scene_1)
-    pygame.display.update()
+def draw_board(board_position: Position):
+    screen.blit(board_position.image, (0, 0))
+    current_position.x = board_position.x
+    current_position.y = board_position.y
     if button_des.draw():
         print("Malowniczy opis nudnego terenu")
-    if button_N.draw():
-        print("Idem na północ")
+        time.sleep(5)
+        print("W trakcie realizacji")
+    if button_N.draw() and board_position.N:
+        print("Pójdem na PÓŁNOC")
+        time.sleep(3)
+    if button_E.draw() and board_position != True:
+        print("Nie woln Ci iść na wschód")
+
+while True:
+    draw_board(Position(1,1))
+    pygame.display.update()
+
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
 
             quit()
-
-
 
 pygame.display.update()
