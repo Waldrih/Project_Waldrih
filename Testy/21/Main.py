@@ -2,8 +2,8 @@ import time
 
 import pygame
 from pygame import Surface
-from Position import Position
-from Board import Board
+
+
 
 pygame.init()
 
@@ -14,7 +14,31 @@ screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption('Button demo')
 screen.fill(GRAY)
 
-# button class
+class Board:
+    main_img = None
+    def __init__(self, main_img: Surface, N: bool, E: bool, S: bool, W: bool, description_img: Surface ):
+        self.main_img = main_img
+        self.N = N
+        self.E = E
+        self.S = S
+        self.W = W
+        self.description_img = description_img
+
+    def get_main_img(self):
+        return self.main_img
+
+class Position:
+    def __init__(self, x: int, y: int, board: Board ):
+        self.x = x
+        self.y = y
+        self.board = board
+
+    def get_board(self):
+        return self.board
+
+    def __str__(self):
+        return f"Pozycja x: {self.x}. y: {self.y}"
+
 class Button():
     def __init__(self, x, y, image: Surface):
         width = image.get_width()
@@ -66,7 +90,7 @@ board_1 = Board(img_scene_1,True,False,False,False,img_description_1)
 board_2 = Board(img_scene_2, False,True,True,False,img_description_2)
 board_3 = Board(img_scene_3,False,False,True,True,img_description_3)
 
-position_1_1 = Position(1,1,board_1)
+position_1_1 = Position(1,1,Board(img_scene_1,True,False,False,False,img_description_1))
 position_1_0 = Position(1,0,board_2)
 position_2_0 = Position(2,0,board_2)
 
@@ -81,21 +105,18 @@ def choise_button(N: bool, E: bool, S: bool, W: bool):
         pass
 
 def draw_board(positions: list, x_start: int, y_start: int):
-    current_position = Position(None,None,None)
     i = 0
-    for position in positions:
-        if position.x == x_start and position.y == y_start:
-            current_position = positions.pop(i)
-            print(current_position)
+    current_position = positions[i]
+
+    for i in range(len(positions)):
+        pass
 
     cur_board = current_position.board
 
 
-
-
 while True:
 
-    draw_board(positions,1,1)
+
     pygame.display.update()
 
     for event in pygame.event.get():
