@@ -36,6 +36,12 @@ class Position:
     def get_board(self):
         return self.board
 
+    def get_x(self):
+        return self.x
+
+    def get_y(self):
+        return self.y
+
     def __str__(self):
         return f"Pozycja x: {self.x}. y: {self.y}"
 
@@ -92,7 +98,7 @@ board_3 = Board(img_scene_3,False,False,True,True,img_description_3)
 
 position_1_1 = Position(1,1,Board(img_scene_1,True,False,False,False,img_description_1))
 position_1_0 = Position(1,0,board_2)
-position_2_0 = Position(2,0,board_2)
+position_2_0 = Position(2,0,board_3)
 
 positions = [position_1_1,position_1_0,position_2_0]
 
@@ -104,19 +110,14 @@ def choise_button(N: bool, E: bool, S: bool, W: bool):
     if S and True:
         pass
 
-def draw_board(positions: list, x_start: int, y_start: int):
-    i = 0
-    current_position = positions[i]
-
-    for i in range(len(positions)):
-        pass
-
-    cur_board = current_position.board
+def draw_board(x_start: int, y_start: int):
+    for position in positions:
+        if position.get_x() == x_start and position.get_y() == y_start:
+            screen.blit(position.board.get_main_img(),(0,0))
 
 
 while True:
-
-
+    draw_board(2,0)
     pygame.display.update()
 
     for event in pygame.event.get():
