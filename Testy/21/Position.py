@@ -1,11 +1,12 @@
 from pygame import Surface
+from Board import Board
 
 class Position:
-    def __init__(self, x: int, y: int, image: Surface, N: bool, E: bool, S: bool, W: bool):
+    def __init__(self, x: int, y: int, board: Board ):
         self.x = x
         self.y = y
-        self.image = image
-        self.N = N
-        self.E = E
-        self.S = S
-        self.W = W
+        self.board = Board
+
+    def __str__(self):
+        return f"Pozycja x: {self.x}. y: {self.y}"
+
