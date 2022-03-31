@@ -1,9 +1,6 @@
 import time
-
 import pygame
 from pygame import Surface
-
-
 
 pygame.init()
 
@@ -16,7 +13,9 @@ screen.fill(GRAY)
 
 class Board:
     main_img = None
-    def __init__(self, main_img: Surface, N: bool, E: bool, S: bool, W: bool, description_img: Surface ):
+    def __init__(self, main_img: Surface \
+        ,N: bool, E: bool, S: bool, W: bool,\
+        description_img: Surface ):
         self.main_img = main_img
         self.N = N
         self.E = E
@@ -63,11 +62,12 @@ class Button():
             if pygame.mouse.get_pressed()[0] == 1 and self.clicked == False:
                 self.clicked = True
                 action = True
+                print(action)
+                return action
             if pygame.mouse.get_pressed()[0] == 0:
                 self.clicked = False
         # draw button on screen
         screen.blit(self.image, (self.rect.x, self.rect.y))
-
         return action
 
 img_scene_1 = pygame.image.load('scenes\scene_1.png')
@@ -103,22 +103,47 @@ position_2_0 = Position(2,0,board_3)
 positions = [position_1_1,position_1_0,position_2_0]
 
 def choise_button(N: bool, E: bool, S: bool, W: bool):
-    if N and True:
-        print("Idymy na PO")
-    if E and True:
-        print("Pódziesz Ty na wschód")
-    if S and True:
-        pass
+    if N and button_N.draw():
+        print("Możesz iść na połnoc")
+        bool_n = button_N.draw()
+    elif N == False and button_N.draw():
+        print("Nie możesz iść na północ")
+
+    if E and button_E.draw():
+        print("Możesz iść na wschód")
+        bool_e = button_E.draw()
+    elif E == False and button_E.draw():
+        print("Nie możesz iść na wschód")
+
+    if S and button_S.draw():
+        print("Możesz iść na południe")
+        bool_s = button_S.draw()
+    elif S == False and button_S.draw():
+        print("Nie możesz iść na południe")
+
+    if W and button_W.draw():
+        print("Możesz iść na zachód")
+        bool_w = button_W.draw()
+    elif W == False and button_W.draw():
+        print("Nie możesz iść na zachód")
 
 def draw_board(x_start: int, y_start: int):
     for position in positions:
         if position.get_x() == x_start and position.get_y() == y_start:
             screen.blit(position.board.get_main_img(),(0,0))
+        if button_des.draw():
+            screen.blit()
+            #button_N.draw()
+            #button_E.draw()
+            #button_S.draw()
+            #button_W.draw()
+    choise_button(True,False,False,False)
 
 
 while True:
-    draw_board(2,0)
+    draw_board(1,1)
     pygame.display.update()
+    #choise_button(True, False, False, False)
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
