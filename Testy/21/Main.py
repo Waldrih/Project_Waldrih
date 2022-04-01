@@ -159,6 +159,7 @@ def draw_board(x_start: int, y_start: int):
     if loop() == "NORTH":
         y_start += 1
         print(f"y_start= {y_start}")
+        return draw_board(x_start, y_start + 1)
 
 
 
