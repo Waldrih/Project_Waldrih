@@ -146,19 +146,20 @@ def choise_button(N: bool, E: bool, S: bool, W: bool):
         print("Nie możesz iść na zachód")
 
 def draw_board(x_start: int, y_start: int):
-    if direction == "NORTH":
+    def loop():
+        for position in positions:
+            if position.get_x() == x_start and position.get_y() == y_start:
+                screen.blit(position.board.get_main_img(), (0, 0))
+                if button_des.draw():
+                    screen.blit(position.board.get_description_img(), (45, 30))
+                    pygame.display.update()
+                    time.sleep(3)
+                    print("opis")
+                return choise_button(position.board.N, position.board.E, position.board.S, position.board.W)
+    if loop() == "NORTH":
         y_start += 1
         print(f"y_start= {y_start}")
 
-    for position in positions:
-        if position.get_x() == x_start and position.get_y() == y_start:
-            screen.blit(position.board.get_main_img(),(0,0))
-            if button_des.draw():
-                screen.blit(position.board.get_description_img(), (45, 30))
-                pygame.display.update()
-                time.sleep(3)
-                print("opis")
-            direction ==choise_button(position.board.N, position.board.E, position.board.S, position.board.W)
 
 
 
