@@ -74,8 +74,8 @@ class Button():
 img_scene_1 = pygame.image.load('scenes\scene_1.png')
 img_scene_2 = pygame.image.load('scenes\scene_2.png')
 img_scene_3 = pygame.image.load('scenes\scene_3.png')
-img_scene_4 = pygame.image.load('scenes\scene_3.png')
-img_scene_5 = pygame.image.load('scenes\scene_3.png')
+img_scene_4 = pygame.image.load('scenes\scene_4.png')
+#img_scene_5 = pygame.image.load('scenes\scene_3.png')
 
 img_button_DES = pygame.image.load('buttons_138px\DES.png')
 img_button_N = pygame.image.load('buttons_138px\Polnoc.png')
@@ -86,6 +86,7 @@ img_button_W = pygame.image.load('buttons_138px\W.png')
 img_description_1 = pygame.image.load('descriptions\des_1.png.bmp')
 img_description_2 = pygame.image.load('descriptions\des_2.png.bmp')
 img_description_3 = pygame.image.load('descriptions\des_3.png.bmp')
+img_description_4 = pygame.image.load('descriptions\des_4.png.bmp')
 
 button_des = Button(552, 300, img_button_DES )
 button_N = Button(0,300,img_button_N)
@@ -96,10 +97,12 @@ button_W = Button(414,300,img_button_W)
 board_1 = Board(img_scene_1,True,False,False,False,img_description_1)
 board_2 = Board(img_scene_2, False,True,True,False,img_description_2)
 board_3 = Board(img_scene_3,False,False,True,True,img_description_3)
+board_4 = Board(img_scene_4,True,False,True,True,img_description_4)
 
-position_1_1 = Position(1,1,Board(img_scene_1,True,False,False,False,img_description_1))
+position_1_1 = Position(1,1,board_1)
 position_1_0 = Position(1,0,board_2)
 position_2_0 = Position(2,0,board_3)
+position_2_1 = Position(2,1,board_4)
 
 positions = [position_1_1,position_1_0,position_2_0]
 
