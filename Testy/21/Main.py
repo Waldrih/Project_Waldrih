@@ -10,6 +10,7 @@ WIDTH = 690
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption('Button demo')
 screen.fill(GRAY)
+time_to_blit = None
 
 class Board:
     main_img = None
@@ -132,11 +133,13 @@ def draw_board(x_start: int, y_start: int):
         if position.get_x() == x_start and position.get_y() == y_start:
             screen.blit(position.board.get_main_img(),(0,0))
         if button_des.draw():
-            screen.blit()
-            #button_N.draw()
-            #button_E.draw()
-            #button_S.draw()
-            #button_W.draw()
+            screen.blit(img_description_1,(45,30))
+
+            pygame.display.update()
+            time.sleep(3)
+            print("opis")
+
+
     choise_button(True,False,False,False)
 
 
