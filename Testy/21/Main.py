@@ -12,9 +12,9 @@ pygame.display.set_caption('Button demo')
 screen.fill(GRAY)
 
 class Direction:
-    NORTH = 1
+    NORTH = -1
     EAST = 1
-    SOUTH = -1
+    SOUTH = 1
     WEST = -1
 
 class Board:
@@ -42,6 +42,11 @@ class Position:
         self.y = y
         self.board = board
 
+    def __eq__(self, other):
+        return isinstance(other, Position) and \
+        self.x == other.x and \
+        self.y == other.y
+
     def get_board(self):
         return self.board
 
@@ -52,6 +57,15 @@ class Position:
         return self.y
 
     def set_position_north(self):
+        self.y -= 1
+
+    def set_position_east(self):
+        self.x += 1
+
+    def set_position_west(self):
+        self.x -= 1
+
+    def set_position_south(self):
         self.y += 1
 
     def __str__(self):
@@ -130,21 +144,21 @@ def choise_button(N: bool, E: bool, S: bool, W: bool, pos: Position):
     if E and button_E.draw():
         print("Możesz iść na wschód")
         print(f"Kierunek {Direction.EAST}")
-        return Direction.EAST
+        return pos.set_position_east()
     elif E == False and button_E.draw():
         print("Nie możesz iść na wschód")
 
     if S and button_S.draw():
         print("Możesz iść na południe")
         print(f"Kierunek {Direction.SOUTH}")
-        return Direction.SOUTH
+        return pos.set_position_south()
     elif S == False and button_S.draw():
         print("Nie możesz iść na południe")
 
     if W and button_W.draw():
         print("Możesz iść na zachód")
         print(f"Kierunek {Direction.WEST}")
-        return Direction.WEST
+        return pos.set_position_west()
     elif W == False and button_W.draw():
         print("Nie możesz iść na zachód")
 
@@ -165,9 +179,33 @@ def draw_board(start_Position: Position, positions_list):
         return choise_button(position.board.N, position.board.E, position.board.S, position.board.W,
                                  start_Position)
 
+def draw_board_new(start_Position: Position, positions_list):
+
+    for position in positions_list:
+        if start_Position.__eq__(position):
+            screen.blit(position.board.get_main_img(), (0, 0))
+            if button_des.draw():
+                screen.blit(position.board.get_description_img(), (45, 30))
+                pygame.display.update()
+                time.sleep(1)
+                print("opis")
+                print(f"Start pozycja {start_Position}")
+                print(f"Pozycja z tablicy {positions.index(position)}")
+
+            return choise_button(position.board.N, position.board.E, position.board.S, position.board.W,start_Position)
+
+def print_index(list, position: Position):
+    for pos in list:
+        if pos.__eq__(position):
+            print(list.index(pos))
+
+
 
 while True:
-    draw_board(position_1_1,positions)
+    #draw_board(position_1_0,positions)
+    draw_board_new(position_2_1,positions)
+    #print_index(positions,position_1_0)
+    #time.sleep(3)
     pygame.display.update()
 
     for event in pygame.event.get():
