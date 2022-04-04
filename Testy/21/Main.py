@@ -130,7 +130,9 @@ position_1_0 = Position(1, 0, board_2)
 position_2_0 = Position(2, 0, board_3)
 position_2_1 = Position(2, 1, board_4)
 
+
 positions = [position_1_1, position_1_0, position_2_0, position_2_1]
+revers_positions = list(reversed(positions))
 
 def choise_button(N: bool, E: bool, S: bool, W: bool, pos: Position):
     if N and button_N.draw():
@@ -203,7 +205,7 @@ def print_index(list, position: Position):
 
 while True:
     #draw_board(position_1_0,positions)
-    draw_board_new(position_2_1,positions)
+    draw_board_new(position_1_1,revers_positions)
     #print_index(positions,position_1_0)
     #time.sleep(3)
     pygame.display.update()
