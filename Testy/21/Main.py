@@ -101,18 +101,28 @@ img_scene_1 = pygame.image.load('scenes\scene_1.png')
 img_scene_2 = pygame.image.load('scenes\scene_2.png')
 img_scene_3 = pygame.image.load('scenes\scene_3.png')
 img_scene_4 = pygame.image.load('scenes\scene_4.png')
-# img_scene_5 = pygame.image.load('scenes\scene_3.png')
+img_scene_5 = pygame.image.load('scenes\scene_5.png')
+img_scene_6 = pygame.image.load('scenes\scene_6.png')
+img_scene_7 = pygame.image.load('scenes\scene_7.png')
+img_scene_8 = pygame.image.load('scenes\scene_8.png')
+img_scene_9 = pygame.image.load('scenes\scene_9.png')
 
 img_button_DES = pygame.image.load('buttons_138px\DES.png')
 img_button_N = pygame.image.load('buttons_138px\Polnoc.png')
 img_button_E = pygame.image.load('buttons_138px\E.png')
 img_button_S = pygame.image.load('buttons_138px\S.png')
 img_button_W = pygame.image.load('buttons_138px\W.png')
+img_no_way = pygame.image.load('buttons_138px\way.png')
 
-img_description_1 = pygame.image.load('descriptions\des_1.png.bmp')
-img_description_2 = pygame.image.load('descriptions\des_2.png.bmp')
-img_description_3 = pygame.image.load('descriptions\des_3.png.bmp')
-img_description_4 = pygame.image.load('descriptions\des_4.png.bmp')
+img_description_1 = pygame.image.load('descriptions\des_1.png')
+img_description_2 = pygame.image.load('descriptions\des_2.png')
+img_description_3 = pygame.image.load('descriptions\des_3.png')
+img_description_4 = pygame.image.load('descriptions\des_4.png')
+img_description_5 = pygame.image.load('descriptions\des_5.png')
+img_description_6 = pygame.image.load('descriptions\des_6.png')
+img_description_7 = pygame.image.load('descriptions\des_7.png')
+img_description_8 = pygame.image.load('descriptions\des_8.png')
+img_description_9 = pygame.image.load('descriptions\des_9.png')
 
 button_des = Button(552, 300, img_button_DES)
 button_N = Button(0, 300, img_button_N)
@@ -124,14 +134,24 @@ board_1 = Board(img_scene_1, True, False, False, False, img_description_1)
 board_2 = Board(img_scene_2, False, True, True, False, img_description_2)
 board_3 = Board(img_scene_3, False, False, True, True, img_description_3)
 board_4 = Board(img_scene_4, True, False, True, True, img_description_4)
+board_5 = Board(img_scene_5, True, False, False, True, img_description_5)
+board_6 = Board(img_scene_6, False, True, False, True, img_description_6)
+board_7 = Board(img_scene_7, True, True, False, False, img_description_7)
+board_8 = Board(img_scene_8, True, False, True, False, img_description_8)
+board_9 = Board(img_scene_9, False, False, True, False, img_description_9)
 
 position_1_1 = Position(1, 1, board_1)
 position_1_0 = Position(1, 0, board_2)
 position_2_0 = Position(2, 0, board_3)
 position_2_1 = Position(2, 1, board_4)
+position_2_2 = Position(2, 2, board_5)
+position_1_2 = Position(1, 2, board_6)
+position_0_2 = Position(0, 2, board_7)
+position_0_1 = Position(0, 1, board_8)
+position_0_0 = Position(0, 0, board_9)
 
 
-positions = [position_1_1, position_1_0, position_2_0, position_2_1]
+positions = [position_1_1, position_1_0, position_2_0, position_2_1, position_2_2,position_1_2,position_0_2,position_0_1,position_0_0]
 revers_positions = list(reversed(positions))
 
 def choise_button(N: bool, E: bool, S: bool, W: bool, pos: Position):
@@ -173,7 +193,7 @@ def draw_board(start_Position: Position, positions_list):
             if button_des.draw():
                 screen.blit(position.board.get_description_img(), (45, 30))
                 pygame.display.update()
-                time.sleep(1)
+                time.sleep(5)
                 print("opis")
                 print(f"Start pozycja {start_Position}")
                 print(f"Pozycja z tablicy {positions.index(position)}")
@@ -189,10 +209,11 @@ def draw_board_new(start_Position: Position, positions_list):
             if button_des.draw():
                 screen.blit(position.board.get_description_img(), (45, 30))
                 pygame.display.update()
-                time.sleep(1)
+                time.sleep(4)
                 print("opis")
                 print(f"Start pozycja {start_Position}")
                 print(f"Pozycja z tablicy {positions.index(position)}")
+                print("")
 
             return choise_button(position.board.N, position.board.E, position.board.S, position.board.W,start_Position)
 
@@ -204,14 +225,10 @@ def print_index(list, position: Position):
 
 
 while True:
-    #draw_board(position_1_0,positions)
     draw_board_new(position_1_1,revers_positions)
-    #print_index(positions,position_1_0)
-    #time.sleep(3)
     pygame.display.update()
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             quit()
 
-pygame.display.update()
